@@ -1,57 +1,73 @@
-//FilaCircular.js
-class Fila{ 
-    #inicio; //# privados
+class Fila {
+    #inicio;
     #fim;
     #qtd;
-    #elementos; // vetor
-    constructor(tamanho=10){ 
+    #elementos;
+
+    constructor(tamanho = 10) {
         this.#inicio = 0;
-        this.#fim = -1;
+        this.#fim = 0;
         this.#qtd = 0;
         this.#elementos = new Array(tamanho);
     }
-    
-    isFull(){
-     return this.#fim === 
-             this.#elementos.length - 1;            
+
+    isFull() {
+        return this.#qtd === this.#elementos.length;
     }
 
-    isEmpty(){
-        return this.#fim < this.#inicio; 
+    isEmpty() {
+        return this.#qtd === 0;
     }
 
-    enqueue(dado){
-        if(!this.isFull()){
-            this.#fim++;
+    enqueue(dado) {
+        if (!this.isFull()) {
             this.#elementos[this.#fim] = dado;
+            this.#fim++;
+            if (this.#fim === this.#elementos.length) {
+                this.#fim = 0; // reinicia
+            }
             this.#qtd++;
             return true;
-        }// fim if
-        else
-            return false; // se estiver cheio
+        } else {
+            return false;
+        }
     }
 
-    dequeue(){
-        if(!this.isEmpty()){
-            const dado = 
-                 this.#elementos[this.#inicio];
+    dequeue() {
+        if (!this.isEmpty()) {
+            const dado = this.#elementos[this.#inicio];
+            this.#elementos[this.#inicio] = null;
             this.#inicio++;
+            if (this.#inicio === this.#elementos.length) {
+                this.#inicio = 0; // reinicia
+            }
             this.#qtd--;
             return dado;
-        }// fim if
-        else
-            return null; // se estiver vazio 
+        } else {
+            return null;
+        }
     }
 
-    toString(){
+    toString() {
         let filaString = "";
-        for(let i=this.#inicio; i<=this.#fim;i++){
-            filaString += this.#elementos[i] +" |";
-        }// fim for
+        let index = this.#inicio;
+        for (let i = 0; i < this.#qtd; i++) {
+            filaString += this.#elementos[index] + " | ";
+            index++;
+            if (index === this.#elementos.length) {
+                index = 0;
+            }
+        }
         console.log(filaString);
         return filaString;
     }
 
+    peek() {
+        if(!this.isEmpty()){
+            return this.#elementos[this.#inicio];
+        } else {
+            return null;
+        }
+    }
     
-
-}// fim classe
+}
