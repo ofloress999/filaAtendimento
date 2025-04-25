@@ -15,3 +15,14 @@ li {
 li:hover {
     background-color: #e2e2e2;
 }
+
+#paginaUsuario a {
+	font-size: 1.1rem;
+	color: #e2e2e2 !important;
+	text-decoration: none;
+}
+
+#paginaUsuario a:hover {
+	text-decoration:underline;
+
+}
