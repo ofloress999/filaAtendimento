@@ -16,13 +16,16 @@ li:hover {
     background-color: #e2e2e2;
 }
 
-#paginaUsuario a {
-	font-size: 1.1rem;
-	color: #e2e2e2 !important;
+a {
+	padding-top: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: green;
 	text-decoration: none;
 }
-
-#paginaUsuario a:hover {
-	text-decoration:underline;
+a:hover {
+	transform: scale(1.02);
+	text-decoration: underline;
 
 }
